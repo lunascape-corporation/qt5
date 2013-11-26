@@ -1,6 +1,6 @@
 [submodule "qtbase"]
 	path = qtbase
-	url = git://gitorious.org/qt/qtbase.git
+	url = git@github.com:lunascape-corporation/qtbase.git
 [submodule "qtsvg"]
 	path = qtsvg
 	url = git://gitorious.org/qt/qtsvg.git
@@ -36,7 +36,7 @@
 	url = git://gitorious.org/qt/qtrepotools.git
 [submodule "qtwebkit"]
 	path = qtwebkit
-	url = git://gitorious.org/qt/qtwebkit.git
+	url = git@github.com:lunascape-corporation/qtwebkit.git
 [submodule "qtwebkit-examples"]
 	path = qtwebkit-examples
 	url = git://gitorious.org/qt/qtwebkit-examples.git
