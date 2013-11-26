@@ -119,6 +119,11 @@ B<Repository options:>
 Switch to internal URLs and make use of the Berlin git mirrors.
 (Implies `--mirror').
 
+=item --oslo
+
+Switch to internal URLs and make use of the Oslo git mirrors.
+(Implies `--mirror').
+
 
 =item --http
 
@@ -197,16 +202,17 @@ my %GERRIT_REPOS = map { $_ => "qt/$_" } qw(
     qt5
     qlalr
     qtactiveqt
+    qtandroidextras
     qtbase
     qtconnectivity
     qtdeclarative
     qtdoc
     qtdocgallery
+    qtenginio
     qtfeedback
     qtgraphicaleffects
     qtimageformats
     qtjsondb
-    qtjsbackend
     qtlocation
     qtmacextras
     qtmultimedia
@@ -232,16 +238,19 @@ my %GERRIT_REPOS = map { $_ => "qt/$_" } qw(
 
 my @DEFAULT_REPOS = qw(
     qtactiveqt
+    qtandroidextras
     qtbase
+    qtconnectivity
     qtdeclarative
     qtdoc
     qtgraphicaleffects
     qtimageformats
-    qtjsbackend
+    qtmacextras
     qtmultimedia
     qtqa
     qtquick1
     qtquickcontrols
+    qtlocation
     qtrepotools
     qtscript
     qtsensors
@@ -251,6 +260,7 @@ my @DEFAULT_REPOS = qw(
     qttranslations
     qtwebkit
     qtwebkit-examples
+    qtwinextras
     qtx11extras
     qtxmlpatterns
 );
@@ -260,6 +270,9 @@ my $GERRIT_SSH_BASE
 
 my $BER_MIRROR_URL_BASE
     = 'git://hegel/';
+
+my $OSLO_MIRROR_URL_BASE
+    = 'git://qilin/';
 
 sub new
 {
@@ -322,6 +335,9 @@ sub parse_arguments
 
         'berlin' => sub {
             $self->{'mirror-url'}        = $BER_MIRROR_URL_BASE;
+        },
+        'oslo' => sub {
+            $self->{'mirror-url'}        = $OSLO_MIRROR_URL_BASE;
         },
     ) || pod2usage(2);
 
