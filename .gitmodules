@@ -160,7 +160,7 @@
 	initrepo = true
 [submodule "qtwebsockets"]
 	path = qtwebsockets
-	url = ../qtwebsockets.git
+	url = git@github.com:qtproject/qtwebsockets.git
 	branch = 5.4.2
 	initrepo = true
 [submodule "qtwebchannel"]
