@@ -337,9 +337,11 @@ sub git_clone_all_submodules
             $subbranches{$1} = $3;
         } elsif ($2 eq "url") {
             my ($mod, $base) = ($1, $3);
-            next if ($base !~ /^\.\.\//);
-            $base = $my_repo_base.'/'.$base;
-            while ($base =~ s,/(?!\.\./)[^/]+/\.\./,/,g) {}
+            # next if ($base !~ /^\.\.\//);
+            if ($base =~ /^\.\.\//) {
+              $base = $my_repo_base.'/'.$base;
+              while ($base =~ s,/(?!\.\./)[^/]+/\.\./,/,g) {}
+            }
             $subbases{$mod} = $base;
         } elsif ($2 eq "update") {
             push @subset, '-'.$1 if ($3 eq 'ignore');
@@ -459,7 +461,8 @@ sub git_clone_one_submodule
         }
     }
 
-    my $url = $self->{'base-url'}.$repo_basename;
+    # my $url = $self->{'base-url'}.$repo_basename;
+    my $url = $repo_basename;
     my $mirror;
     if ($mirror_url) {
         $mirror = $mirror_url.$repo_basename;
@@ -568,6 +571,7 @@ sub run
     die("Have no origin remote.\n") if (!$url);
     $url =~ s,\.git$,,;
     $url =~ s,qt/qt5$,,;
+    $url =~ s,/qt5$,,;
     $self->{'base-url'} = $url;
 
     $self->git_clone_all_submodules('qt/qt5', $self->{branch}, @{$self->{'module-subset'}});
