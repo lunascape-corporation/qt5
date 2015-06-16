@@ -246,7 +246,7 @@ sub parse_arguments
         'force-hooks'         => 0 ,
         'ignore-submodules'   => 0 ,
         'mirror-url'          => "",
-        'update'              => 1 ,
+        'update'              => 0 ,
         'webkit'              => 1 ,
         'module-subset'       => "default",
     );
